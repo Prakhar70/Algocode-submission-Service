@@ -1,5 +1,6 @@
 const fastifyPlugin = require("fastify-plugin");
 const servicePlugin = require("./services/servicePlugin");
+const todoRoutes = require("./routes/todoRoutes");
 
 /**
  *
@@ -11,7 +12,9 @@ async function app(fastify, options) {
   
   fastify.register(servicePlugin);
 
-  fastify.register(require("./routes/apiRoutes"), { prefix: "/api" });
+  fastify.register(todoRoutes, {prefix:'/todos'})
+
+  fastify.register(require("./routes/api/apiRoutes"), { prefix: "/api" });
 }
 
 module.exports = fastifyPlugin(app);
