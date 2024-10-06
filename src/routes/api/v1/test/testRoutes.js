@@ -1,4 +1,4 @@
-const testController = require('../../../../controllers/testController')
+const testController = require('../../../../controllers/submissionContoller')
 
 
 // For routes you dont need to make fastify plugin, 
