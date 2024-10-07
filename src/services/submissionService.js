@@ -13,6 +13,7 @@ class SubmissionService{
         //Hit the problem admin service and fetch the problem details
         //we are going to entry in db
         const problemId = submissionPayload.problemId;
+        const userId = submissionPayload.userId;
         console.log("ProblemId:",submissionPayload);
         const problemAdminApiResponse = await fetchProblemDetails(problemId);
         console.log("problemapireposne",problemAdminApiResponse);
@@ -39,8 +40,12 @@ class SubmissionService{
                 language:submission.language,
                 inputCase:problemAdminApiResponse.data.testCases[0].input,
                 outputCase:problemAdminApiResponse.data.testCases[0].output,
+                userId,
+                submissionId:submission._id
             }
         });
+
+        //TODO: add handling of all test case here
         return {queueResponse:response, submission};
     }
 }
